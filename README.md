@@ -1,9 +1,22 @@
-# CG-IAA Code Repository
+# [CG-IAA] - Code Repository
 
-This repository contains the code associated with our research paper titled "Towards Explainable Image Aesthetics Assessment with CLIP-based Critiques Generation", which is currently under review at TMM (IEEE Transactions on Multimedia).
+This is the official code repository for our research paper:
 
-**Code Release**
+> **[Towards Explainable Image Aesthetics Assessment with CLIP-based Critiques Generation]**  
+> Submitted to: **IEEE Transactions on Multimedia (TMM)**  
 
-Please note that the full code will be released upon acceptance of our paper. We appreciate your interest and patience. If you have any questions regarding our research, feel free to open an issue and we will respond as soon as possible.
+The paper is currently under review. 
 
-Thank you for your understanding and support.
+## :warning: Code Release Notice 
+
+The **full code** and **resources** used in this research are planned to be released here upon the acceptance of our paper. We appreciate your interest and patience. 
+
+---
+
+## Contact Us
+
+If you have any questions or suggestions regarding our research, feel free to [open an issue](link-to-issue-page) and we will respond as soon as possible.
+
+---
+
+Thank you for your understanding and support!
