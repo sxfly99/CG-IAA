@@ -15,7 +15,7 @@ The **full code** and **resources** used in this research are planned to be rele
 
 ## Contact Us
 
-If you have any questions or suggestions regarding our research, feel free to [open an issue](link-to-issue-page) and we will respond as soon as possible.
+If you have any questions or suggestions regarding our research, feel free to [open an issue]([link-to-issue-page](https://github.com/sxfly99/CG-IAA/issues)) and we will respond as soon as possible.
 
 ---
 
