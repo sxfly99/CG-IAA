@@ -10,7 +10,7 @@
 ## 💡 Motivation
 
 <p align="center">
-    <img src="assets/motivation.png" alt="motivation" width="800" />
+    <img src="assets/motivation.png" alt="motivation" width="400" />
 </p>
 
 Compared with the unimodal image aesthetics assessment (IAA), multimodal IAA has demonstrated superior performance. This indicates that the critiques could provide rich aesthetics-aware semantic information, which also enhance the explainability of IAA models. However, images are not always accompanied with critiques in real-world situation, rendering multimodal IAA inapplicable in most cases. Therefore, it would be interesting to investigate whether we can generate aesthetic critiques to facilitate image aesthetic representation learning and enhance model explainability.
