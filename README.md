@@ -51,5 +51,7 @@ If you find our work useful, please consider citing our paper:
   journal={IEEE Transactions on Circuits and Systems for Video Technology}, 
   title={Towards Explainable Image Aesthetics Assessment with Attribute-oriented Critiques Generation}, 
   year={2024},
-  doi={10.1109/TCSVT.2024.3470870}}
+  note={Early Access},
+  doi={10.1109/TCSVT.2024.3470870}
+}
 ```
