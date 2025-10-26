@@ -1,57 +1,196 @@
-# Towards Explainable Image Aesthetics Assessment With Attribute-Oriented Critiques Generation
+# CG-IAA: Towards Explainable Image Aesthetics Assessment with Attribute-Oriented Critiques Generation
 
-[![Paper](https://img.shields.io/badge/Paper-PDF-red)](https://ieeexplore.ieee.org/document/10700814)
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Paper](https://img.shields.io/badge/Paper-IEEE%20TCSVT-blue)](https://ieeexplore.ieee.org/document/10700814)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## ⏰ Schedule
+Official PyTorch implementation of **"Towards Explainable Image Aesthetics Assessment with Attribute-oriented Critiques Generation"** (IEEE TCSVT 2025).
 
-- **[2024-09-26]** Our CG-IAA paper was accepted by TCSVT! :balloon:
+---
 
-## 💡 Motivation
+## 📰 News
 
-<p align="center">
-    <img src="assets/motivation.png" alt="motivation" width="400" />
-</p>
+-  🎉 We release the **multi-attribute aesthetic critiques generation model** with pre-trained weights and training data!
+-  🎉 Our CG-IAA paper was accepted by IEEE TCSVT!
+- **[Coming Soon]** The complete aesthetic assessment model will be released soon.
 
-Compared with the unimodal image aesthetics assessment (IAA), multimodal IAA has demonstrated superior performance. This indicates that the critiques could provide rich aesthetics-aware semantic information, which also enhance the explainability of IAA models. However, images are not always accompanied with critiques in real-world situation, rendering multimodal IAA inapplicable in most cases. Therefore, it would be interesting to investigate whether we can generate aesthetic critiques to facilitate image aesthetic representation learning and enhance model explainability.
+---
 
-## 🏗️ Pipeline
+## 💡 Overview
 
-<p align="center">
-    <img src="assets/pipeline.png" alt="pipeline" width="800" />
-</p>
+**CG-IAA** addresses a critical challenge in image aesthetics assessment: How can we leverage the power of multimodal learning when aesthetic critiques are unavailable? Our solution generates high-quality aesthetic critiques from multiple attribute perspectives, enabling both accurate aesthetic prediction and enhanced model explainability.
 
-We first conduct vision-language aesthetic pretraining for vanilla CLIP model to learn aesthetic-related knowledge. With the consideration that people usually evaluate images from different perspectives of  aesthetic attributes such as color, light, etc., a large multimodal IAA database with attribute annotation is constructed based on knowledge transfer. Then, the CLIP-based Multi-Attribute Experts (MAEs) are trained with the supervision of the constructed database. Finally, with the pretrained MAEs, we can not only improve the explainability of the aesthetic model, but also further obtain discriminative textual features. By fusing the textual aesthetic feature with the visual feature, more accurate multimodal aesthetic features are obtained to make the final aesthetic decision. 
+### Key Contributions
 
-## 🚀 Quick Start for Training & Evaluation
+- **Multi-Attribute Aesthetic Critiques Generation**: We propose a CLIP-based model that generates diverse aesthetic critiques from four different perspectives:
+  - 🎨 **Color and Light**: Color harmony, saturation, lighting quality
+  - 📐 **Composition**: Layout, balance, structural elements
+  - 🔍 **Depth and Focus**: Depth of field, focus, blur effects
+  - ⭐ **General Feelings**: Overall aesthetic impression and quality
 
-Coming soon.
+- **Enhanced Explainability**: Generated critiques provide human-readable explanations for aesthetic judgments, making the model more transparent and interpretable.
 
-## 🏆 Model Zoo
-
-Coming soon.
-
-## 📊 Visualization
+### Framework Architecture
 
 <p align="center">
-    <img src="assets/visualization.png" alt="visualization" width="900" />
+    <img src="assets/pipeline.png" alt="CG-IAA Pipeline" width="800" />
 </p>
 
-## 💙 Acknowledgement
+The CG-IAA framework consists of three main components:
+1. **VLAP (Vision-Language Aesthetic Pretraining)**: Fine-tune CLIP on aesthetic data
+2. **MAEL (Multi-Attribute Experts Learning)**: Train attribute-specific expert models
+3. **MAP (Multimodal Aesthetics Prediction)**: Fuse visual and textual features for final prediction
 
-CG-IAA is built upon the awesome [CLIP](https://github.com/openai/CLIP), [ClipCap](https://github.com/rmokady/CLIP_prefix_caption), [timm](https://github.com/huggingface/pytorch-image-models/). 
+---
 
-## 📚 Citation
+## 🚀 What's Released
+
+### ✅ Currently Available
+
+1. **Aesthetic Critiques Generation Model** - Multi-attribute aesthetic critiques generation
+   - Pre-trained model weights
+   - Inference code for single image processing
+
+2. **Training Data** - Large-scale multi-attribute aesthetic critique dataset
+   - ~150K critiques for Color and Light
+   - ~100K critiques for Composition
+   - ~120K critiques for Depth and Focus
+   - ~570K critiques for General Feelings
+   - Total: **~940K aesthetic critiques** with attribute annotations
+
+### 🔜 Coming Soon
+
+- Complete aesthetic assessment model
+
+---
+
+## 📦 Installation
+
+### Requirements
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/CG-IAA.git
+cd CG-IAA
+
+# Create and activate conda environment
+conda env create -f environment.yml
+conda activate cg-iaa
+```
+
+### Download Pre-trained Weights
+
+Download the pre-trained model weights from Google Drive and place them in the `checkpoints/` directory:
+
+📥 **[Download Model Weights](https://drive.google.com/drive/folders/12jO6mF3ppBpap1tOx3ic2Mo4YNZ7m14Y?usp=drive_link)** 
+The checkpoints directory should contain:
+```
+checkpoints/
+├── base_model.pt          # Base model
+├── color.pt              # Color expert model
+├── composition.pt        # Composition expert model
+├── dof.pt               # Depth of Field expert model
+└── general.pt           # General expert model
+```
+
+### Download Training Data (Optional)
+
+If you want to train your own models, download our multi-attribute aesthetic critique dataset:
+
+📥 **[Download Training Data](https://drive.google.com/drive/folders/1cKLD2pl405Wl2UB2RXMKilzOLS4IJpeH?usp=drive_link)**
+
+---
+
+## 🎯 Quick Start
+
+### Single Image Inference
+
+Generate aesthetic critiques for a single image:
+
+```bash
+python caption_inference.py --image_path samples/1.jpg
+```
+
+**Output:**
+```
+================================================================================
+Multi-Attribute Aesthetic Captions for: samples/1.jpg
+================================================================================
+
+[Color]
+
+[Composition]
+
+[Depth of Field]
+
+[General]
+
+================================================================================
+```
+
+---
+
+## 📊 Model Performance
+
+Our generated aesthetic critiques achieve competitive performance when used alone for IAA task:
+
+| Method | PLCC ↑ | SRCC ↑ | ACC ↑ |
+|--------|--------|--------|-------|
+| ARIC (AAAI 2023) | 0.591 | 0.550 | 74.3 |
+| VILA (CVPR 2023) | 0.534 | 0.505 | 75.2 |
+| **AesCritique (Ours)** | **0.720** | **0.712** | **80.8** |
+
+*Tested on AVA database using text-only input*
+
+---
+
+## 📁 Dataset Structure
+
+Our released multi-attribute aesthetic critique dataset is organized as follows:
+
+```
+data/
+├── color.json           # Color and Light critiques
+├── composition.json     # Composition critiques
+├── dof.json            # Depth and Focus critiques
+└── general.json        # General Feelings critiques
+```
+
+Each JSON file contains entries in the following format:
+```json
+[
+  {
+    "id": 0,
+    "img_id": "773931",
+    "caption": "Image feels a tad dark, which I dont think helps this image for me."
+  },
+  ...
+]
+```
+
+---
+
+## 🙏 Acknowledgement
+
+CG-IAA is built upon the following excellent open-source projects:
+
+- [CLIP](https://github.com/openai/CLIP) - Contrastive Language-Image Pre-training
+- [ClipCap](https://github.com/rmokady/CLIP_prefix_caption) - CLIP Prefix for Image Captioning
+- [timm](https://github.com/huggingface/pytorch-image-models) - PyTorch Image Models
+
+---
+
+## 📖 Citation
 
 If you find our work useful, please consider citing our paper:
 
 ```bibtex
-@article{li2024cgiaa,
+@article{li2025cgiaa,
   author={Li, Leida and Sheng, Xiangfei and Chen, Pengfei and Wu, Jinjian and Dong, Weisheng},
   journal={IEEE Transactions on Circuits and Systems for Video Technology}, 
-  title={Towards Explainable Image Aesthetics Assessment with Attribute-oriented Critiques Generation}, 
-  year={2024},
-  note={Early Access},
-  doi={10.1109/TCSVT.2024.3470870}
+  title={Towards Explainable Image Aesthetics Assessment With Attribute-Oriented Critiques Generation}, 
+  year={2025},
+  volume={35},
+  number={2},
+  pages={1464-1477}
 }
 ```
