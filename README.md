@@ -92,7 +92,7 @@ checkpoints/
 └── general.pt           # General expert model
 ```
 
-### Download Training Data (Optional)
+### Download Data (Optional)
 
 If you want to train your own models, download our multi-attribute aesthetic critique dataset:
 
