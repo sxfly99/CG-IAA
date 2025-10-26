@@ -169,6 +169,14 @@ Each JSON file contains entries in the following format:
 
 ---
 
+## 📊 Visualization
+
+<p align="center">
+    <img src="assets/visualization.png" alt="visualization" width="900" />
+</p>
+
+---
+
 ## 🙏 Acknowledgement
 
 CG-IAA is built upon the following excellent open-source projects:
